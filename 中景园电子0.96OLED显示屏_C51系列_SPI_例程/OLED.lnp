@@ -1,0 +1,7 @@
+"STARTUP.obj",
+"main.obj",
+"oled.obj",
+"led.obj",
+"uart.obj" 
+TO "OLED" 
+RAMSIZE(256) 

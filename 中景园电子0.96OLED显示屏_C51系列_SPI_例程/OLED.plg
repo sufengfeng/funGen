@@ -1,0 +1,150 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+F:\开发板技术资料\中景园电子stc15w4k56s4开发板技术资料\参考程序\01-开发板默认附带程序中景园电子0.96OLED显示屏_C51系列_SPI_例程\中景园电子0.96OLED显示屏_C51系列_SPI_例程\OLED.uvproj
+Project File Date:  02/25/2016
+
+<h2>Output:</h2>
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+main.c(64): error C211: call not to a function
+main.c(64): error C208: 'function': too many actual parameters
+compiling oled.c...
+SRC\oled.c(154): warning C294: unreachable code
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+main.c(59): warning C294: unreachable code
+main.c(88): warning C290: missing return value
+compiling oled.c...
+SRC\oled.c(154): warning C294: unreachable code
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_DISPLAY_ON?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_DISPLAY_OFF?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_SHOWNUM?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_DRAWBMP?OLED
+Program Size: data=35.0 xdata=0 code=5801
+creating hex file from "OLED"...
+"OLED" - 0 Error(s), 7 Warning(s).
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+main.c(60): warning C294: unreachable code
+main.c(89): warning C290: missing return value
+compiling oled.c...
+SRC\oled.c(154): warning C294: unreachable code
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_DISPLAY_ON?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_DISPLAY_OFF?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_SHOWNUM?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_DRAWBMP?OLED
+Program Size: data=35.0 xdata=0 code=5833
+creating hex file from "OLED"...
+"OLED" - 0 Error(s), 7 Warning(s).
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+main.c(60): warning C294: unreachable code
+main.c(89): warning C290: missing return value
+compiling oled.c...
+SRC\oled.c(154): warning C294: unreachable code
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_DISPLAY_ON?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_DISPLAY_OFF?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_SHOWNUM?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_DRAWBMP?OLED
+Program Size: data=35.0 xdata=0 code=5827
+creating hex file from "OLED"...
+"OLED" - 0 Error(s), 7 Warning(s).
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+main.c(55): warning C294: unreachable code
+main.c(84): warning C290: missing return value
+compiling oled.c...
+SRC\oled.c(154): warning C294: unreachable code
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_DISPLAY_ON?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_DISPLAY_OFF?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_SHOWNUM?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_DRAWBMP?OLED
+Program Size: data=35.0 xdata=0 code=5738
+creating hex file from "OLED"...
+"OLED" - 0 Error(s), 7 Warning(s).
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+main.c(55): warning C294: unreachable code
+main.c(84): warning C290: missing return value
+compiling oled.c...
+SRC\oled.c(154): warning C294: unreachable code
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_DISPLAY_ON?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_DISPLAY_OFF?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_SHOWNUM?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_DRAWBMP?OLED
+Program Size: data=35.0 xdata=0 code=5742
+creating hex file from "OLED"...
+"OLED" - 0 Error(s), 7 Warning(s).
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+main.c(55): warning C294: unreachable code
+main.c(84): warning C290: missing return value
+compiling oled.c...
+SRC\oled.c(154): warning C294: unreachable code
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_DISPLAY_ON?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_DISPLAY_OFF?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_SHOWNUM?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_DRAWBMP?OLED
+Program Size: data=35.0 xdata=0 code=5746
+creating hex file from "OLED"...
+"OLED" - 0 Error(s), 7 Warning(s).
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+main.c(55): warning C294: unreachable code
+main.c(84): warning C290: missing return value
+compiling oled.c...
+SRC\oled.c(154): warning C294: unreachable code
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_DISPLAY_ON?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_DISPLAY_OFF?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_SHOWNUM?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_DRAWBMP?OLED
+Program Size: data=35.0 xdata=0 code=5746
+creating hex file from "OLED"...
+"OLED" - 0 Error(s), 7 Warning(s).

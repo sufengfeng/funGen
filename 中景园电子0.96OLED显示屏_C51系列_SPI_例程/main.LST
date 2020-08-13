@@ -1,0 +1,81 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              08/13/2020 18:08:53 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\SRC) DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          //////////////////////////////////////////////////////////////////////////////////   
+   2          //本程序只供学习使用，未经作者许可，不得用于其它任何用途
+   3          //中景园电子
+   4          //店铺地址：http://shop73023976.taobao.com/?spm=2013.1.0.0.M4PqC2
+   5          //
+   6          //  文 件 名   : main.c
+   7          //  版 本 号   : v2.0
+   8          //  作    者   : HuangKai
+   9          //  生成日期   : 2018-0101
+  10          //  最近修改   : 
+  11          //  功能描述   : OLED 4接口演示例程(51系列)
+  12          //              说明: 
+  13          //              ----------------------------------------------------------------
+  14          //              GND    电源地
+  15          //              VCC  接5V或3.3v电源
+  16          //              D0   P1^4（SCL）
+  17          //              D1   P1^3（SDA）
+  18          //              RES  接P12
+  19          //              DC   接P11
+  20          //              CS   接P10               
+  21          //              ----------------------------------------------------------------
+  22          // 修改历史   :
+  23          // 日    期   : 
+  24          // 作    者   : HuangKai
+  25          // 修改内容   : 创建文件
+  26          //版权所有，盗版必究。
+  27          //Copyright(C) 中景园电子2018/3/16
+  28          //All rights reserved
+  29          //******************************************************************************/
+  30          //******************************************************************************/
+  31          #include "REG51.h"
+  32          #include "oled.h"
+  33          #include "bmp.h"
+  34          
+  35          
+  36          
+  37          //extern void LED_BLINK(void);
+  38           int main(void)
+  39           {  u8 t;
+  40   1        OLED_Init();      //初始化OLED  
+  41   1        oled_show_two();
+  42   1         
+  43   1         GPIO_config();
+  44   1        UartInit();
+  45   1        while(1) 
+  46   1        {     
+  47   2          LED_BLINK();
+  48   2          SendString("中景园电子STC15W DEMO UART1 TEST!\r\n");
+  49   2          SendString("http://shop73023976.taobao.com/\r\n");
+  50   2          delay_ms(500);
+  51   2        }   
+  52   1        
+  53   1      }
+*** WARNING C280 IN LINE 39 OF main.c: 't': unreferenced local variable
+  54          
+C51 COMPILER V9.60.0.0   MAIN                                                              08/13/2020 18:08:53 PAGE 2   
+
+  55          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     42    ----
+   CONSTANT SIZE    =   2118    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)
