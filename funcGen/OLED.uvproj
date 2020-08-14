@@ -401,6 +401,21 @@
               <FileType>1</FileType>
               <FilePath>.\uart.c</FilePath>
             </File>
+            <File>
+              <FileName>timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>uart2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\uart2.c</FilePath>
+            </File>
+            <File>
+              <FileName>extern_IO.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\extern_IO.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

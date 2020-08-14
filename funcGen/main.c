@@ -34,20 +34,38 @@
 
 
 
+void Delay1ms()		//@24.000MHz
+{
+	unsigned char i, j;
+
+	i = 24;
+	j = 85;
+	do
+	{
+		while (--j);
+	} while (--i);
+}
+void DelayNms(unsigned int N){
+	
+	while(N--){
+		Delay1ms();
+	}
+}
+
 //extern void LED_BLINK(void);
  int main(void)
  {	u8 t;
 	OLED_Init();			//初始化OLED  
-	oled_show_two();
-	 
-	 GPIO_config();
-	UartInit();
+	oled_show_two();	//显示
+	Timer0_init();
+	
+	GPIO_config();
+	UartInit();			//调试串口具有最高优先级
+	EA = 1;					//打开总中断
 	while(1) 
 	{			
-		LED_BLINK();
-		SendString("中景园电子STC15W DEMO UART1 TEST!\r\n");
-		SendString("http://shop73023976.taobao.com/\r\n");
-		delay_ms(500);
+		SendString("running...\r\n");
+		DelayNms(500);
 	}	  
 	
 }

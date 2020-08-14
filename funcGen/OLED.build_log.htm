@@ -18,17 +18,13 @@ Hex Converter:   OH51.exe V2.7.0.0
 CPU DLL:         S8051.DLL V3.122.0.0
 Dialog DLL:      DP51.DLL V2.67.0.0 
 <h2>Project:</h2>
-C:\Users\Administrator.SC-201911172258\Desktop\中景园电子0.96OLED显示屏_C51系列_SPI_例程\OLED.uvproj
-Project File Date:  08/13/2020
+C:\Users\Administrator.SC-201911172258\Desktop\funGen\funcGen\OLED.uvproj
+Project File Date:  08/14/2020
 
 <h2>Output:</h2>
 Build target 'Target 1'
-compiling main.c...
-main.c(39): warning C280: 't': unreferenced local variable
-compiling oled.c...
-SRC\oled.c(154): warning C294: unreachable code
-SRC\oled.c(359): warning C290: missing return value
-compiling led.c...
+compiling extern_IO.c...
+extern_IO.c(34): warning C280: 'i': unreferenced local variable
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?OLED_DISPLAY_ON?OLED
@@ -38,10 +34,14 @@ linking...
     SEGMENT: ?PR?_OLED_DRAWBMP?OLED
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?OLED_SHOW_ONE?OLED
-Program Size: data=38.0 xdata=0 code=6303
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MAINT3?UART2
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MAINTEST2?EXTERN_IO
+Program Size: data=79.1 xdata=0 code=6756
 creating hex file from "OLED"...
 "OLED" - 0 Error(s), 7 Warning(s).
-Build Time Elapsed:  00:00:03
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>
