@@ -1,7 +1,7 @@
 [INIT]
 PICFIX=1
 VARCount=64
-SCREENDSIZE=800X480
+SCREENDSIZE=480X800
 SPADDRESS=5000
 Version=0
 [IMG]
@@ -28,4 +28,3 @@ Version=0
 111=111_设备故障1按键效果.bmp
 120=120_DOC.bmp
 121=121_DOC.bmp
-1=test.bmp
