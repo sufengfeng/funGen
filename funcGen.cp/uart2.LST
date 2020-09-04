@@ -1,0 +1,197 @@
+C51 COMPILER V9.60.0.0   UART2                                                             09/01/2020 21:24:16 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE UART2
+OBJECT MODULE PLACED IN uart2.OBJ
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE uart2.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\SRC) DEBUG OBJECTEXTEND TABS(2
+                    -)
+
+line level    source
+
+   1          /*---------------------------------------------------------------------*/
+   2          /* --- STC MCU Limited ------------------------------------------------*/
+   3          /* --- STC15F4K60S4 系列 定时器2用作串口2的波特率发生器举例------------*/
+   4          /* --- Mobile: (86)13922805190 ----------------------------------------*/
+   5          /* --- Fax: 86-0513-55012956,55012947,55012969 ------------------------*/
+   6          /* --- Tel: 86-0513-55012928,55012929,55012966-------------------------*/
+   7          /* --- Web: www.STCMCU.com --------------------------------------------*/
+   8          /* --- Web: www.GXWMCU.com --------------------------------------------*/
+   9          /* 如果要在程序中使用此代码,请在程序中注明使用了STC的资料及程序        */
+  10          /* 如果要在文章中应用此代码,请在文章中注明使用了STC的资料及程序        */
+  11          /*---------------------------------------------------------------------*/
+  12          
+  13          //本示例在Keil开发环境下请选择Intel的8058芯片型号进行编译
+  14          //若无特别说明,工作频率一般为11.0592MHz
+  15          
+  16          
+  17          #include "reg51.h"
+  18          #include "intrins.h"
+  19          #include "global.h"
+  20          
+  21          typedef unsigned char BYTE;
+  22          typedef unsigned int WORD;
+  23          
+  24          #define FOSC 24000000UL          //系统频率
+  25          #define BAUD 115200             //串口波特率
+  26          
+  27          #define NONE_PARITY     0       //无校验
+  28          #define ODD_PARITY      1       //奇校验
+  29          #define EVEN_PARITY     2       //偶校验
+  30          #define MARK_PARITY     3       //标记校验
+  31          #define SPACE_PARITY    4       //空白校验
+  32          
+  33          #define PARITYBIT NONE_PARITY   //定义校验位
+  34          
+  35          sfr P0M1 = 0x93;
+  36          sfr P0M0 = 0x94;
+  37          sfr P1M1 = 0x91;
+  38          sfr P1M0 = 0x92;
+  39          sfr P2M1 = 0x95;
+  40          sfr P2M0 = 0x96;
+  41          sfr P3M1 = 0xb1;
+  42          sfr P3M0 = 0xb2;
+  43          sfr P4M1 = 0xb3;
+  44          sfr P4M0 = 0xb4;
+  45          sfr P5M1 = 0xC9;
+  46          sfr P5M0 = 0xCA;
+  47          sfr P6M1 = 0xCB;
+  48          sfr P6M0 = 0xCC;
+  49          sfr P7M1 = 0xE1;
+  50          sfr P7M0 = 0xE2;
+  51          
+  52          sfr AUXR  = 0x8e;               //辅助寄存器
+  53          sfr S2CON = 0x9a;               //UART2 控制寄存器
+  54          sfr S2BUF = 0x9b;               //UART2 数据寄存器
+C51 COMPILER V9.60.0.0   UART2                                                             09/01/2020 21:24:16 PAGE 2   
+
+  55          sfr T2H   = 0xd6;               //定时器2高8位
+  56          sfr T2L   = 0xd7;               //定时器2低8位
+  57          sfr IE2   = 0xaf;               //中断控制寄存器2
+  58          
+  59          #define S2RI  0x01              //S2CON.0
+  60          #define S2TI  0x02              //S2CON.1
+  61          #define S2RB8 0x04              //S2CON.2
+  62          #define S2TB8 0x08              //S2CON.3
+  63          
+  64          sfr P_SW2   = 0xBA;             //外设功能切换寄存器2
+  65          #define S2_S0 0x01              //P_SW2.0
+  66          
+  67          bit busy;
+  68          
+  69          void Uart2SendData(BYTE dat);
+  70          void Uart2SendString(char *s);
+  71          
+  72          void uart2Init()
+  73          {
+  74   1          P0M0 = 0x00;
+  75   1          P0M1 = 0x00;
+  76   1          P1M0 = 0x00;
+  77   1          P1M1 = 0x00;
+  78   1          P2M0 = 0x00;
+  79   1          P2M1 = 0x00;
+  80   1          P3M0 = 0x00;
+  81   1          P3M1 = 0x00;
+  82   1          P4M0 = 0x00;
+  83   1          P4M1 = 0x00;
+  84   1          P5M0 = 0x00;
+  85   1          P5M1 = 0x00;
+  86   1          P6M0 = 0x00;
+  87   1          P6M1 = 0x00;
+  88   1          P7M0 = 0x00;
+  89   1          P7M1 = 0x00;
+  90   1      
+  91   1          P_SW2 &= ~S2_S0;            //S2_S0=0 (P1.0/RxD2, P1.1/TxD2)
+  92   1      //  P_SW2 |= S2_S0;             //S2_S0=1 (P4.6/RxD2_2, P4.7/TxD2_2)
+  93   1      
+  94   1      #if (PARITYBIT == NONE_PARITY)
+  95   1          S2CON = 0x50;               //8位可变波特率
+  96   1      #elif (PARITYBIT == ODD_PARITY) || (PARITYBIT == EVEN_PARITY) || (PARITYBIT == MARK_PARITY)
+                  S2CON = 0xda;               //9位可变波特率,校验位初始为1
+              #elif (PARITYBIT == SPACE_PARITY)
+                  S2CON = 0xd2;               //9位可变波特率,校验位初始为0
+              #endif
+ 101   1      
+ 102   1          T2L = (65536 - (FOSC/4/BAUD));   //设置波特率重装值
+ 103   1          T2H = (65536 - (FOSC/4/BAUD))>>8;
+ 104   1          AUXR = 0x14;                //T2为1T模式, 并启动定时器2
+ 105   1          IE2 = 0x01;                 //使能串口2中断
+ 106   1          EA = 1;
+ 107   1      
+ 108   1          Uart2SendString("STC15F2K60S2\r\nUart2 Test !\r\n");
+ 109   1      }
+ 110          
+ 111          /*----------------------------
+ 112          UART2 中断服务程序
+ 113          -----------------------------*/
+ 114          void Uart2() interrupt 8
+ 115          {
+ 116   1          if (S2CON & S2RI)
+C51 COMPILER V9.60.0.0   UART2                                                             09/01/2020 21:24:16 PAGE 3   
+
+ 117   1          {
+ 118   2              S2CON &= ~S2RI;         //清除S2RI位
+ 119   2              P0 = S2BUF;             //P0显示串口数据
+ 120   2              P2 = (S2CON & S2RB8);   //P2.2显示校验位
+ 121   2            SendString("rteste...\r\n");
+ 122   2          }
+ 123   1          if (S2CON & S2TI)
+ 124   1          {
+ 125   2              S2CON &= ~S2TI;         //清除S2TI位
+ 126   2              busy = 0;               //清忙标志
+ 127   2          }
+ 128   1      }
+ 129          
+ 130          /*----------------------------
+ 131          发送串口数据
+ 132          ----------------------------*/
+ 133          void Uart2SendData(BYTE dat)
+ 134          {
+ 135   1          while (busy);               //等待前面的数据发送完成
+ 136   1          ACC = dat;                  //获取校验位P (PSW.0)
+ 137   1          if (P)                      //根据P来设置校验位
+ 138   1          {
+ 139   2      #if (PARITYBIT == ODD_PARITY)
+                      S2CON &= ~S2TB8;        //设置校验位为0
+              #elif (PARITYBIT == EVEN_PARITY)
+                      S2CON |= S2TB8;         //设置校验位为1
+              #endif
+ 144   2          }
+ 145   1          else
+ 146   1          {
+ 147   2      #if (PARITYBIT == ODD_PARITY)
+                      S2CON |= S2TB8;         //设置校验位为1
+              #elif (PARITYBIT == EVEN_PARITY)
+                      S2CON &= ~S2TB8;        //设置校验位为0
+              #endif
+ 152   2          }
+ 153   1          busy = 1;
+ 154   1          S2BUF = ACC;                //写数据到UART2数据寄存器
+ 155   1      }
+ 156          
+ 157          /*----------------------------
+ 158          发送字符串
+ 159          ----------------------------*/
+ 160          void Uart2SendString(char *s)
+ 161          {
+ 162   1          while (*s)                  //检测字符串结束标志
+ 163   1          {
+ 164   2              Uart2SendData(*s++);         //发送当前字符
+ 165   2          }
+ 166   1      }
+ 167          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    200    ----
+   CONSTANT SIZE    =     41    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+C51 COMPILER V9.60.0.0   UART2                                                             09/01/2020 21:24:16 PAGE 4   
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
