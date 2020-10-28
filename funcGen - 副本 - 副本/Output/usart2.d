@@ -1,0 +1,15 @@
+..\output\usart2.o: usart2.c
+..\output\usart2.o: usart1.h
+..\output\usart2.o: ..\CMSIS\stm32f10x.h
+..\output\usart2.o: ..\CMSIS\core_cm3.h
+..\output\usart2.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\output\usart2.o: ..\CMSIS\system_stm32f10x.h
+..\output\usart2.o: ..\USER\stm32f10x_conf.h
+..\output\usart2.o: ..\FWlib\inc\stm32f10x_gpio.h
+..\output\usart2.o: ..\CMSIS\stm32f10x.h
+..\output\usart2.o: ..\FWlib\inc\stm32f10x_rcc.h
+..\output\usart2.o: ..\FWlib\inc\stm32f10x_spi.h
+..\output\usart2.o: ..\FWlib\inc\stm32f10x_usart.h
+..\output\usart2.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\output\usart2.o: ..\FWlib\inc\misc.h
+..\output\usart2.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
