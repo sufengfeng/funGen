@@ -328,7 +328,7 @@ void  FlashTest(void){
 
 //读取波形类型
 int GetWaveType(WaveType *waveType){
-	SPI_FLASH_BufferRead((uint8_t*)waveType, Addr__WaveType, sizeof(WaveBuff));
+	SPI_FLASH_BufferRead((uint8_t*)waveType, Addr__WaveType, sizeof(waveType));
 	return 0;
 }
 

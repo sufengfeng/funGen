@@ -11,7 +11,7 @@
 #define __BSP_LCD_H
 
 #include "stdint.h"
-
+#include "main.h"
 
 #define HEAD0		0X5A		//´®¿ÚÆÁ
 #define HEAD1		0XA5		//´®¿ÚÆÁ

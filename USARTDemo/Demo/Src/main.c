@@ -147,7 +147,9 @@ int main(void)
 	//waveTypeTest();
 	
 	//lcd_showpic(2);
-	
+//	lcd_sendword(0xe002,1);
+//	while(1)HAL_Delay(1);
+	//lcd_readword(0xF000);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -157,6 +159,15 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+		#define uin8_t unsigned char 
+		static uin8_t g_nIsInitial=1;
+		if(g_nIsInitial){				//初始化设备所有参数，并重新载入配置
+			
+			GetWaveType(&g_allWaveType);		//
+			lcdShowMark(&g_allWaveType);
+			g_nIsInitial=0;
+		}
+		
 			if(g_UsartType01.RX_flag)    	// Receive flag
 			{  
 					g_UsartType01.RX_flag=0;	// clean flag
@@ -166,7 +177,7 @@ int main(void)
 			if(g_UsartType03.RX_flag)    	// Receive flag
 			{  
 					g_UsartType03.RX_flag=0;	// clean flag
-					HAL_UART_Transmit(&huart3, g_UsartType03.RX_pData, g_UsartType03.RX_Size, 0xFFFF);
+					HAL_UART_Transmit(&huart1, g_UsartType03.RX_pData, g_UsartType03.RX_Size, 0xFFFF);
 					lcd_receive();		//处理串口屏数据
 			} 
 			HAL_Delay(8);

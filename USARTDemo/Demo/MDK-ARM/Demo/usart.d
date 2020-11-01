@@ -40,3 +40,4 @@ demo\usart.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 demo\usart.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 demo\usart.o: ../Inc/usart.h
 demo\usart.o: ../Inc/lcd.h
+demo\usart.o: ../Inc/main.h

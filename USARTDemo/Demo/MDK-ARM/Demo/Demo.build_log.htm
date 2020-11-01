@@ -21,20 +21,28 @@ Target DLL:      Segger\JL2CM3.dll V2.99.29.0
 Dialog DLL:      TCM.DLL V1.35.1.0
  
 <h2>Project:</h2>
-F:\parttimejob\wave\USARTDemo\Demo\MDK-ARM\Demo.uvprojx
+F:\parttimejob\wave\funGen\USARTDemo\Demo\MDK-ARM\Demo.uvprojx
 Project File Date:  10/28/2020
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Demo'
-compiling main.c...
-../Src/main.c(69): warning:  #550-D: variable "n"  was set but never used
-          int n, size = 128;
-../Src/main.c: 1 warning, 0 errors
+compiling lcd.c...
+..\Src\lcd.c(40): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+  	len = (uint8_t)strlen(str);
+..\Src\lcd.c(86): warning:  #177-D: variable "data_length"  was declared but never referenced
+  	uint8_t data_length=	g_UsartType03.RX_Size;
+..\Src\lcd.c(150): warning:  #940-D: missing return statement at end of non-void function "lcdShowMark" 
+  }
+..\Src\lcd.c(8): warning:  #177-D: variable "receive_step"  was declared but never referenced
+  static uint16_t receive_step  = 0;
+..\Src\lcd.c(9): warning:  #177-D: variable "receive_count"  was declared but never referenced
+  static uint16_t receive_count = 0;
+..\Src\lcd.c: 5 warnings, 0 errors
 linking...
-Program Size: Code=14932 RO-data=424 RW-data=28 ZI-data=6644  
+Program Size: Code=15276 RO-data=436 RW-data=28 ZI-data=6644  
 FromELF: creating hex file...
-"Demo\Demo.axf" - 0 Error(s), 1 Warning(s).
+"Demo\Demo.axf" - 0 Error(s), 5 Warning(s).
 
 <h2>Software Packages used:</h2>
 

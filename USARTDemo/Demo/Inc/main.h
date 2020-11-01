@@ -157,6 +157,7 @@ typedef struct _WaveBuff{
 #define BasicAddress		(0x80000)		
 void waveTypeTest(void);
 void PC_receive(void);
+int lcdShowMark(WaveType *waveType);
 extern volatile WaveType g_allWaveType;	//全局参数
 extern volatile uint8_t g_WaveID;					//当前波形ID
 /* USER CODE END Private defines */
